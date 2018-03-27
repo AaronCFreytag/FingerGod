@@ -36,10 +36,12 @@ public class Renderer {
     }
     
     private struct UniformContainer {
-        var mvp: GLint!
-        var normal: GLint!
-        var pass: GLint!
-        var shade: GLint!
+        var mvp: GLuint!
+        var normal: GLuint!
+        var pass: GLuint!
+        var shade: GLuint!
+        var lights: GLuint!
+        var numLights: GLuint!
     }
     private static var uniforms = UniformContainer()
     private static var view : GLKView!
@@ -88,10 +90,21 @@ public class Renderer {
     }
     
     private static func setupUniforms() {
-        uniforms.mvp = glGetUniformLocation(program, "modelViewProjectionMatrix")
-        uniforms.normal = glGetUniformLocation(program, "normalMatrix")
-        uniforms.pass = glGetUniformLocation(program, "passThrough")
-        uniforms.shade = glGetUniformLocation(program, "shadeInFrag")
+        uniforms.mvp = GLuint(glGetUniformLocation(program, "modelViewProjectionMatrix"))
+        uniforms.normal = GLuint(glGetUniformLocation(program, "normalMatrix"))
+        uniforms.pass = GLuint(glGetUniformLocation(program, "passThrough"))
+        uniforms.shade = GLuint(glGetUniformLocation(program, "shadeInFrag"))
+        uniforms.numLights = GLuint(glGetUniformLocation(program, "numLights"))
+        
+        let tmp = UnsafeMutablePointer<GLuint>.allocate(capacity: 1)
+        glGenBuffers(1, tmp)
+        uniforms.lights = tmp.pointee
+        tmp.deinitialize()
+        tmp.deallocate(capacity: 1)
+        
+        glBindBuffer(GLenum(GL_UNIFORM_BUFFER), uniforms.lights)
+        glBufferData(GLenum(GL_UNIFORM_BUFFER), MemoryLayout<Light>.size, nil, GLenum( GL_DYNAMIC_DRAW))
+        glBindBufferRange(GLenum(GL_UNIFORM_BUFFER), 0, uniforms.lights, 0, MemoryLayout<Light>.size)
     }
     
     private static func loadShader(filename: String, type: Int32) -> GLuint {
@@ -108,9 +121,6 @@ public class Renderer {
             
             glShaderSource(shader, 1, &src, nil)
             glCompileShader(shader)
-            
-            
-            print(src)
             
             var compileStatus = GLint(0)
             glGetShaderiv(shader, GLenum(GL_COMPILE_STATUS), &compileStatus)

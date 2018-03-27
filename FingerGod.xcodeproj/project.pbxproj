@@ -22,6 +22,7 @@
 		3D0DA0BE203E1C5D0050F708 /* HexTile.obj in Resources */ = {isa = PBXBuildFile; fileRef = 3D0DA0BA203E1C5D0050F708 /* HexTile.obj */; };
 		3D0DA0BF203E1C5D0050F708 /* HexTile.obj in Resources */ = {isa = PBXBuildFile; fileRef = 3D0DA0BA203E1C5D0050F708 /* HexTile.obj */; };
 		3D0DA0C0203E1C5D0050F708 /* HexTile.obj in Resources */ = {isa = PBXBuildFile; fileRef = 3D0DA0BA203E1C5D0050F708 /* HexTile.obj */; };
+		3D7CF023206AC900007E29EA /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CF022206AC900007E29EA /* Light.swift */; };
 		3DDB59432035F39C0000E0C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB59422035F39C0000E0C4 /* AppDelegate.swift */; };
 		3DDB59452035F39C0000E0C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB59442035F39C0000E0C4 /* ViewController.swift */; };
 		3DDB59482035F39C0000E0C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DDB59462035F39C0000E0C4 /* Main.storyboard */; };
@@ -39,7 +40,6 @@
 		992762DD2036BA0200C73599 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992762DC2036BA0200C73599 /* Component.swift */; };
 		992762E32036D17A00C73599 /* CounterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992762E22036D17A00C73599 /* CounterComponent.swift */; };
 		992762E52036E57200C73599 /* FingerGodGameObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992762E42036E57200C73599 /* FingerGodGameObjectTest.swift */; };
-		993F14532046935B00AF5BFB /* FingerGodModelLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DA09D203E164D0050F708 /* FingerGodModelLoadingTests.swift */; };
 		993F14592046AAF200AF5BFB /* TileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993F14572046AAF200AF5BFB /* TileMap.swift */; };
 		993F145A2046AAF200AF5BFB /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993F14582046AAF200AF5BFB /* Tile.swift */; };
 		993F14602046AF4500AF5BFB /* MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993F145F2046AF4500AF5BFB /* MapComponent.swift */; };
@@ -86,12 +86,12 @@
 		3D0DA07F203DF46D0050F708 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3D0DA085203DF50C0050F708 /* FingerGodHexText.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerGodHexText.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D0DA091203DFD240050F708 /* ModelReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelReader.swift; sourceTree = "<group>"; };
-		3D0DA09D203E164D0050F708 /* FingerGodModelLoadingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FingerGodModelLoadingTests.swift; path = ../FingerGodModelLoadingTests.swift; sourceTree = "<group>"; };
 		3D0DA09F203E16870050F708 /* FingerGodModelLoadingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerGodModelLoadingTests.swift; sourceTree = "<group>"; };
 		3D0DA0B1203E1C550050F708 /* CubeModel.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CubeModel.mtl; sourceTree = SOURCE_ROOT; };
 		3D0DA0B2203E1C560050F708 /* CubeModel.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CubeModel.obj; sourceTree = SOURCE_ROOT; };
 		3D0DA0B9203E1C5D0050F708 /* HexTile.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HexTile.mtl; sourceTree = SOURCE_ROOT; };
 		3D0DA0BA203E1C5D0050F708 /* HexTile.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HexTile.obj; sourceTree = SOURCE_ROOT; };
+		3D7CF022206AC900007E29EA /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		3DDB593F2035F39C0000E0C4 /* FingerGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FingerGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DDB59422035F39C0000E0C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DDB59442035F39C0000E0C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -196,28 +196,29 @@
 		3DDB59412035F39C0000E0C4 /* FingerGod */ = {
 			isa = PBXGroup;
 			children = (
-				993F14562046AADC00AF5BFB /* TileSystem */,
-				99ED16CB2046912200827958 /* RotatingCubeComponent.swift */,
-				99ED16C92046909300827958 /* FingerGodGame.swift */,
 				3D0DA0B0203E1C3F0050F708 /* Assets */,
-				3DDB59422035F39C0000E0C4 /* AppDelegate.swift */,
-				3DDB59442035F39C0000E0C4 /* ViewController.swift */,
-				3DDB59462035F39C0000E0C4 /* Main.storyboard */,
+				993F14562046AADC00AF5BFB /* TileSystem */,
 				3DDB59492035F39C0000E0C4 /* Assets.xcassets */,
-				3DDB594B2035F39C0000E0C4 /* LaunchScreen.storyboard */,
-				3DDB594E2035F39C0000E0C4 /* Info.plist */,
-				992762D62036B4BD00C73599 /* Game.swift */,
-				99AACA2E2044FB23001262D0 /* Shader.vsh */,
-				99AACA302044FB42001262D0 /* Shader.fsh */,
-				992762DA2036B9DD00C73599 /* GameObject.swift */,
-				C9F4135D203AC2DC001C56E1 /* Subscriber.swift */,
-				3D0DA07D203DF45A0050F708 /* Renderer.swift */,
+				3DDB59422035F39C0000E0C4 /* AppDelegate.swift */,
 				992762DC2036BA0200C73599 /* Component.swift */,
-				3D0DA07F203DF46D0050F708 /* Model.swift */,
 				C9F4135F203ACFFC001C56E1 /* EventDispatcher.swift */,
-				3D0DA091203DFD240050F708 /* ModelReader.swift */,
-				99E70622204515530095BA58 /* ModelInstance.swift */,
+				99ED16C92046909300827958 /* FingerGodGame.swift */,
+				992762D62036B4BD00C73599 /* Game.swift */,
+				992762DA2036B9DD00C73599 /* GameObject.swift */,
+				3DDB594E2035F39C0000E0C4 /* Info.plist */,
+				3DDB594B2035F39C0000E0C4 /* LaunchScreen.storyboard */,
+				3DDB59462035F39C0000E0C4 /* Main.storyboard */,
 				993F145F2046AF4500AF5BFB /* MapComponent.swift */,
+				3D0DA07F203DF46D0050F708 /* Model.swift */,
+				99E70622204515530095BA58 /* ModelInstance.swift */,
+				3D0DA091203DFD240050F708 /* ModelReader.swift */,
+				3D0DA07D203DF45A0050F708 /* Renderer.swift */,
+				99ED16CB2046912200827958 /* RotatingCubeComponent.swift */,
+				99AACA302044FB42001262D0 /* Shader.fsh */,
+				99AACA2E2044FB23001262D0 /* Shader.vsh */,
+				C9F4135D203AC2DC001C56E1 /* Subscriber.swift */,
+				3DDB59442035F39C0000E0C4 /* ViewController.swift */,
+				3D7CF022206AC900007E29EA /* Light.swift */,
 			);
 			path = FingerGod;
 			sourceTree = "<group>";
@@ -226,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				3D0DA09F203E16870050F708 /* FingerGodModelLoadingTests.swift */,
-				3D0DA09D203E164D0050F708 /* FingerGodModelLoadingTests.swift */,
 				233D7435203DF7EB0050CFAB /* FingerGodHexTest.swift */,
 				992762E42036E57200C73599 /* FingerGodGameObjectTest.swift */,
 				992762E02036D15200C73599 /* TestClasses */,
@@ -458,6 +458,7 @@
 			files = (
 				99E70623204515530095BA58 /* ModelInstance.swift in Sources */,
 				3DDB59452035F39C0000E0C4 /* ViewController.swift in Sources */,
+				3D7CF023206AC900007E29EA /* Light.swift in Sources */,
 				993F14592046AAF200AF5BFB /* TileMap.swift in Sources */,
 				990EFF3920427EDB002FEBED /* EventDispatcher.swift in Sources */,
 				99ED16CC2046912200827958 /* RotatingCubeComponent.swift in Sources */,
@@ -485,7 +486,6 @@
 				C98438662046162A00321700 /* FingerGodMessageTests.swift in Sources */,
 				990EFF3820427EB7002FEBED /* Model.swift in Sources */,
 				992762E32036D17A00C73599 /* CounterComponent.swift in Sources */,
-				993F14532046935B00AF5BFB /* FingerGodModelLoadingTests.swift in Sources */,
 				3DDB59582035F39C0000E0C4 /* FingerGodTests.swift in Sources */,
 				233D7436203DF7EB0050CFAB /* FingerGodHexTest.swift in Sources */,
 			);

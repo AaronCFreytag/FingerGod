@@ -11,6 +11,16 @@ uniform mat3 normalMatrix;
 uniform bool passThrough;
 uniform bool shadeInFrag;
 
+struct Light {
+    int type;
+    vec3 color;
+    vec3 position;
+    vec3 direction;
+};
+
+uniform Light lights[10];
+uniform int numLights;
+
 void main()
 {
     if (passThrough)
